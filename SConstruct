@@ -41,6 +41,9 @@ def getLibNames(base_path: str):
         for name in os.listdir(base_path)
         if os.path.isfile(base_path + name)
         if name.endswith(".so") or name.endswith(".a")
+        # libs without the "lib" prefix (e.g. qt_gui_cpp.so) can't be
+        # resolved via -lNAME and aren't needed for direct linking here
+        if name.startswith("lib")
     ]
     return lib_dirs
 
