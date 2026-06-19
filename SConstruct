@@ -10,6 +10,18 @@ ros_dir = "/opt/ros/" + ros_distro
 env = Environment()
 env.SConscript("godot-cpp/SConstruct", "env")
 
+# godot-cpp statically links libstdc++ on Linux for portability, but that
+# means this extension carries its own private copy of std::locale/etc.
+# ROS's shared libraries (e.g. libfastrtps) dynamically link the system
+# libstdc++, so mixing the two copies corrupts the heap when objects
+# allocated by one are destroyed by the other (e.g. std::locale::_Impl
+# during rclcpp/FastDDS participant creation). Link dynamically instead so
+# this extension shares the same libstdc++ as ROS.
+if env["platform"] == "linux":
+    env["LINKFLAGS"] = [
+        flag for flag in env["LINKFLAGS"] if flag not in ("-static-libgcc", "-static-libstdc++")
+    ]
+
 # CacheDir('.cache/scons')
 
 # For reference:
