@@ -88,7 +88,8 @@ for the most up-to-date information on how to build this extension.
 ## Examples
 
 Refer to [the demos](demo/) for examples of GDScript using this
-extension.
+extension. See [demo/README.md](demo/README.md) for step-by-step
+instructions on building and running the demo on a plain Ubuntu terminal.
 
 ## Running Godot with the `godot_ros` GDExtension
 
