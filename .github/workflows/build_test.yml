@@ -110,7 +110,7 @@ jobs:
           git submodule update --init
       - name: Dump this Godot's extension API json
         run: |
-          godot --headless --dump-extension-api
+          godot --headless --verbose --dump-extension-api
       - name: Build this GDExtension and godot-cpp
         shell: bash
         run: |
@@ -121,4 +121,5 @@ jobs:
         run: |
           source /opt/ros/${{ matrix.ros_distro }}/setup.bash
           cd demo
-          godot --headless --import
+          mv bin/godot_ros.gdextension bin/godot_ros.gdextension.disabled
+          godot --headless --verbose --quit
