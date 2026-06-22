@@ -93,7 +93,7 @@ jobs:
         run: |
           apt-get update
           apt-get install -y unzip scons libpulse-dev
-          git config --global --add safe.directory /__w/godot_ros/godot_ros
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Install Godot version
         uses: chickensoft-games/setup-godot@v1
         with:
