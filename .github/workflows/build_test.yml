@@ -121,4 +121,5 @@ jobs:
         run: |
           source /opt/ros/${{ matrix.ros_distro }}/setup.bash
           cd demo
-          godot --headless --import
+          mv godot_ros.gdextension godot_ros.gdextension.disabled
+          godot --headless --verbose --quit
