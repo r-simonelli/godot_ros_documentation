@@ -80,7 +80,7 @@ jobs:
       matrix:
         # aka branch names of godot-cpp
         godot_version:
-            - 4.6
+            - 4.5
         ros_distro: ${{ fromJson(needs.get_ros_distros.outputs.series) }}
         include:
           ${{ fromJson(needs.get_ros_distros.outputs.matrix) }}

@@ -48,7 +48,7 @@ create an issue here in this repository with what you
 think is missing.
 
 ## Building
-These instructions are based on Ubuntu 24.04, Godot 4.6.3, ROS2 Lyrical.
+These instructions are based on Ubuntu 26.04, Godot 4.5, ROS2 Lyrical.
 
 First install dependencies:
 
