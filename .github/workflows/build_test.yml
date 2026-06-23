@@ -122,5 +122,4 @@ jobs:
           source /opt/ros/${{ matrix.ros_distro }}/setup.bash
           apt-get install -y xvfb
           cd demo
-          mv bin/godot_ros.gdextension bin/godot_ros.gdextension.disabled
           xvfb-run -a godot --headless --verbose --import
