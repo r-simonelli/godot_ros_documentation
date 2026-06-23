@@ -8,15 +8,20 @@ namespace godot
 
 void RosSceneTree::_initialize()
 {
-    rclcpp::init(0, nullptr);
+    if (!rclcpp::ok()) {
+        rclcpp::init(0, nullptr);
+    }
+
+    SceneTree::_initialize();
 }
 
 void RosSceneTree::_finalize()
 {
-    // Intentionally not calling rclcpp::shutdown() here: RosNode instances
-    // still alive in the scene tree are destructed after _finalize() runs,
-    // and destructing their rclcpp::Node after the context has shut down
-    // causes an intermittent segfault during process exit.
+    SceneTree::_finalize();
+
+    if (rclcpp::ok()) {
+        rclcpp::shutdown();
+    }
 }
 
 void RosSceneTree::_bind_methods() {}
