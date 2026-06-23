@@ -13,8 +13,10 @@ void RosSceneTree::_initialize()
 
 void RosSceneTree::_finalize()
 {
-    // Shutdown the ROS 2 context
-    rclcpp::shutdown();
+    // Intentionally not calling rclcpp::shutdown() here: RosNode instances
+    // still alive in the scene tree are destructed after _finalize() runs,
+    // and destructing their rclcpp::Node after the context has shut down
+    // causes an intermittent segfault during process exit.
 }
 
 void RosSceneTree::_bind_methods() {}
