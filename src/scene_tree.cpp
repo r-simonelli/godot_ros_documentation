@@ -18,10 +18,6 @@ void RosSceneTree::_initialize()
 void RosSceneTree::_finalize()
 {
     SceneTree::_finalize();
-
-    if (rclcpp::ok()) {
-        rclcpp::shutdown();
-    }
 }
 
 void RosSceneTree::_bind_methods() {}

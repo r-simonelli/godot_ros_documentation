@@ -61,7 +61,12 @@ def getLibNames(base_path: str):
 
 ros_includes = getSubDirs(ros_dir + "/include")
 ros_lib_path = ros_dir + "/lib"
-ros_libs = getLibNames(ros_lib_path)
+ros_libs = [
+    "rclcpp",
+    "rcutils",
+    "std_msgs__rosidl_typesupport_cpp",
+    "sensor_msgs__rosidl_typesupport_cpp",
+]
 
 env.Append(CPPPATH=["include"] + ros_includes)
 env.Append(LIBPATH=[ros_lib_path])
